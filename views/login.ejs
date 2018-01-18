@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title><%= title %></title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+    </head>
+    <body>
+        <%include header.ejs%>
+        <h3>Login to your account</h3>
+        <br>
+        <form action="/login" method="post">
+            <label for="user_name">Enter username: </label><br>
+            <input id="user_name" type="text" name="username" value="Username"><br><br>
+            <label for="password">Enter password: </label><br>
+            <input id="password" type="password" name="password"><br><br>
+            <input type="submit" value="OK">
+        </form>
+    </body>
+</html>

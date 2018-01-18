@@ -1,0 +1,17 @@
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<%include header.ejs%>
+<h3>Invite your roommates</h3>
+<br>
+<form action="/register2" method="post">
+   <%for (i=0; i<numpeople; i++) {%>
+    <label for="user_name">Enter username`3e    : </label><br>
+    <input id="user_name" type="text" name="username" value="Username"><br><br>
+    <% } %>
+</form>
+</body>
+</html>

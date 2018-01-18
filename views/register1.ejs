@@ -1,0 +1,26 @@
+<html>
+
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<%include header.ejs%>
+<h3>Register for a new account</h3>
+<br>
+<form action="/register1" method="post">
+    <label for="username">Enter username: </label><br>
+    <input id="username" type="text" name="username"><br><br>
+    <label for="email">Enter email: </label><br>
+    <input id="email" type="text" name= "email"><br><br>
+    <label for="password">Enter password: </label><br>
+    <input id="password" type="password" name="password"><br><br>
+    <label for="confpass">ReEnter password: </label><br>
+    <input id="confpass" type="password" name="confpass"><br><br>
+    <label for="num">Number of Roommates (including you):</label>
+    <input id="num" type="number" name="numpeople">
+    <input type="submit" value="OK">
+</form>
+</body>
+
+</html>
