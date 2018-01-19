@@ -64,12 +64,22 @@ router.post('/register1', function(req, res, next){
 
         })
 
-        User.getUserByUsername('hi', function(err, user){if(err) throw(err); console.log(user)});
+        res.redirect('/register2/numpeople=' + numpeople);
+        next();
 
     }
 });
 
+router.get('/register2/numpeople=:numpeople', function(req, res, next){
+    res.render('register2', {
+        title: 'Roommate Scheduler',
+        numpeople: req.params.numpeople
+    })
+});
 
+router.post('/register2/', function(req, res, next){
+    console.log(req.body);
+});
 
 module.exports = router;
 
