@@ -3,18 +3,19 @@ var express = require('express');
 var router = express.Router();
 var app = express();
 var User = require('../userModel');
+var Room = require('../roomModel');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index',
-      { title: 'Roommate Scheduler',
-        author: 'Sean Meng'
+      { title: 'Task Scheduler',
+        author: 'Sean Meng and Vincent Lyau'
       });
 });
 
 router.get('/login', function(req, res, next) {
     res.render('login',
-        { title: 'Roommate Scheduler'
+        { title: 'Task Scheduler'
         });
 });
 
@@ -25,7 +26,7 @@ router.post('/login', function(req, res, next){
 
 router.get('/register1', function(req, res, next){
     res.render('register1', {
-            title: 'Roommate Scheduler'
+            title: 'Task Scheduler'
         })
 });
 
@@ -64,24 +65,36 @@ router.post('/register1', function(req, res, next){
 
         })
 
-        res.redirect('/register2/numpeople=' + numpeople);
-        next();
-
+        res.redirect('/register2/numpeople=' + numpeople + '/id=' + newUser._id);
     }
 });
 
-router.get('/register2/numpeople=:numpeople', function(req, res, next){
+router.get('/register2/numpeople=:numpeople/id=:id', function(req, res, next){
     res.render('register2', {
-        title: 'Roommate Scheduler',
+        title: 'Task Scheduler',
         numpeople: req.params.numpeople
     })
 });
 
-router.post('/register2/', function(req, res, next){
-    console.log(req.body);
+
+//error with extracting url data with the post method
+router.post('/register2/numpeople=:numpeople/id=:id', function(req, res, next){
+    var roomname = req.params.roomname;
+    var emailList = req.params.emailList;
+
+    var newRoom = new Room({
+        roomname: roomname,
+        numpeople: numpeople,
+        email: emailList.splice()
+    });
+
+
+
+   res.redirect('/users/id=' + req.params.id);
+});
+
+router.get('/users/id=:id', function (req, res, next) {
+    res.send(id);
 });
 
 module.exports = router;
-
-
-
